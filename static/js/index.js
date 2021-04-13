@@ -65,10 +65,17 @@ function LED1_Off(){
     console.log("MensajeRecibido:"+message.payloadString);
 
   }
+    function onMessageArrived(message) {
+    mensaje=message.payloadString.split("= ");
+    document.getElementById("sensor1").innerHTML=mensaje[1];
+    console.log("MensajeRecibido:"+message.payloadString);  
 
   function sendMessage(Texto){
     message = new Paho.MQTT.Message(Texto);
     message.destinationName = "skillet776@yahoo.com/test1";
     client.send(message);
   }
+  
+  
+
   
